@@ -2,10 +2,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['POSTGRES_HOST'] %>
-  port: <%= ENV['POSTGRES_PORT'] %>
-  username: <%= ENV['POSTGRES_DBUSER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -13,11 +10,19 @@ default: &default
 development:
   <<: *default
   database: talk_to_the_book_development
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  username: <%= ENV['POSTGRES_DBUSER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
  
 test:
   <<: *default
   database: talk_to_the_book_test
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  username: <%= ENV['POSTGRES_DBUSER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 
 production:
