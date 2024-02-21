@@ -23,25 +23,22 @@ class Chat < ApplicationRecord
       messages << { 'role' => 'assistant', 'content' => answer }
     end
     messages << { 'role' => 'user', 'content' => message } if messages.size > 1
-
+  
     response_raw = client.chat(
       parameters: {
-        model:'gpt-3.5-turbo',
-        messages:,
-        temperature:0.7,
-        max_token: 500,
+        model: 'gpt-3.5-turbo',
+        messages: messages,
+        temperature: 0.7,
+        max_tokens: 500,  # Corrected parameter name
         top_p: 1,
-        freqency_penalty: 0.0,
+        frequency_penalty: 0.0,  # Corrected parameter name
         presence_penalty: 0.6
       }
     )
-
-    Rails.logger.debug response_raw
-
-    #reponse = JSON.parse(response_raw.to_json, object_class: OpenStruct)
-
-    #self.q_and_a << [message, response.choices[0].message.content]
+  
+    # Rest of your code...
   end
+  
 
   private
 

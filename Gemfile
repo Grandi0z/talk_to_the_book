@@ -83,3 +83,6 @@ gem "test", "~> 1.0", :group => :development
 gem "dotenv-rails", "~> 2.8", :group => :development
 
 gem "ruby-openai", "~> 6.2"
+
+gem 'faraday', '~> 1.0'
+

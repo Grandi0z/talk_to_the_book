@@ -45,9 +45,11 @@ class ChatsController < ApplicationController
       if @chat.update(chat_params)
         format.html { redirect_to chat_url(@chat), notice: "Chat was successfully updated." }
         format.json { render :show, status: :ok, location: @chat }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
+        format.turbo_stream
       end
     end
   end
